@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Cambio en Main') {
       steps {
-        echo 'Se actualizó la rama main'
+        echo 'Se actualizÃ³ la rama main'
       }
     }
 
@@ -11,13 +11,13 @@ pipeline {
       parallel {
         stage('Deploy BD Pruebas') {
           steps {
-            echo 'Se deployó la base de datos de prueba'
+            echo 'Se deployÃ³ la base de datos de prueba'
           }
         }
 
         stage('Deploy rest') {
           steps {
-            echo 'se ejecutó el servidor REST'
+            echo 'se ejecutÃ³ el servidor REST'
           }
         }
 
@@ -26,7 +26,7 @@ pipeline {
 
     stage('Ejecutar migracion') {
       steps {
-        echo 'Se levantó respaldo de la base de datos'
+        echo 'Se levantÃ³ respaldo de la base de datos'
         echo 'Se ejecutaron las migraciones'
       }
     }
@@ -46,29 +46,6 @@ pipeline {
     stage('Pruebas FrontEnd') {
       steps {
         echo 'Se ejecutaron las pruebas del frontend.'
-      }
-    }
-
-    stage('Actualiza rest prod') {
-      parallel {
-        stage('Actualiza rest prod') {
-          steps {
-            echo 'Se actualizó el servidor rest en producción.'
-          }
-        }
-
-        stage('Actualiza frontend prod') {
-          steps {
-            echo 'Se actualizó versión front end'
-          }
-        }
-
-      }
-    }
-
-    stage('Migraciones prod') {
-      steps {
-        echo 'Se ejecutaron las actualizaciones en la bd de producción.'
       }
     }
 
