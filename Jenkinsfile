@@ -49,6 +49,12 @@ pipeline {
       }
     }
 
+    stage('Mail') {
+      steps {
+        echo 'Se envió email notificando.'
+      }
+    }
+
   }
   environment {
     pruebas = 'pruebas'
