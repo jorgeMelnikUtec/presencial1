@@ -1,23 +1,23 @@
 pipeline {
   agent any
   stages {
-    stage('Cambio en Main') {
+    stage('Aprobacion Manual') {
       steps {
-        echo 'Se actualizó la rama main'
+        echo 'Aprobacion manual'
       }
     }
 
-    stage('Deploy BD Pruebas') {
+    stage('Actualiza rest prod') {
       parallel {
-        stage('Deploy BD Pruebas') {
+        stage('Actualiza rest prod') {
           steps {
-            echo 'Se deployó la base de datos de prueba'
+            echo 'rest'
           }
         }
 
-        stage('Deploy rest') {
+        stage('Actualiza frontend prod') {
           steps {
-            echo 'se ejecutó el servidor REST'
+            echo 'frontend'
           }
         }
 
@@ -26,32 +26,14 @@ pipeline {
 
     stage('Ejecutar migracion') {
       steps {
-        echo 'Se levantó respaldo de la base de datos'
+        echo 'Se levantÃ³ respaldo de la base de datos'
         echo 'Se ejecutaron las migraciones'
-      }
-    }
-
-    stage('Pruebas REST') {
-      steps {
-        echo 'Se ejecutaron las pruebas REST'
-      }
-    }
-
-    stage('Deploy Frontend') {
-      steps {
-        echo 'El front end ha sido desplegado'
-      }
-    }
-
-    stage('Pruebas FrontEnd') {
-      steps {
-        echo 'Se ejecutaron las pruebas del frontend.'
       }
     }
 
     stage('Mail') {
       steps {
-        echo 'Se envi� email notificando.'
+        echo 'Se envió email notificando.'
       }
     }
 
